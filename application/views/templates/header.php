@@ -4,7 +4,7 @@
 	<title>Budgetify</title>
 	<meta name="viewport" content="width=device-width">
 	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>/assets/css/style.css">
 </head>
 <body>
     <section class="hero">
@@ -13,7 +13,7 @@
 	      <div class="container">
 	        <div class="nav-left">
 	          <a class="nav-item">
-	            <img src="image/logo.png" alt="Logo">
+	            <img src="<?php echo base_url(); ?>/assets/img/logo.png" alt="Logo">
 	          </a>
 	        </div>
 	        <span class="nav-toggle">
