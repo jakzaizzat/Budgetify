@@ -15,6 +15,18 @@
             $query = $this->db->get_where('transactions', array('transaction_id' => $id));
             return $query->row_array();
         }
+
+        public function create_transaction(){
+            
+            $data = array(
+                'transaction_name' => $this->input->post('transaction_detail'),
+                'transaction_flow' => $this->input->post('flow'),
+                'transaction_category' => $this->input->post('category'),
+                'transaction_price' => $this->input->post('amount')
+            );
+
+            return $this->db->insert('transactions', $data);
+        }
     }
 
 ?>

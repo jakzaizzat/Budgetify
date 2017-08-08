@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+
+$route['transactions/create'] = 'transactions/create';  
 $route['transactions/(:any)'] = 'transactions/view/$1';
 $route['transactions'] = 'transactions/index';
 $route['default_controller'] = 'pages/view';

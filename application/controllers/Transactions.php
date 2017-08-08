@@ -24,5 +24,25 @@
             $this->load->view('transactions/view', $data);
             $this->load->view('templates/footer');
         }
+
+        public function create(){
+            $data['title'] = 'Create new transactions';
+
+            $this->form_validation->set_rules('transaction_detail', 'Transaction Details', 'required');
+            $this->form_validation->set_rules('flow', 'Flow', 'required');
+            $this->form_validation->set_rules('category', 'Category', 'required');
+            $this->form_validation->set_rules('amount', 'Amount', 'required');
+            
+            if($this->form_validation->run() === FALSE){
+                $this->load->view('templates/header');
+                $this->load->view('transactions/create', $data);
+                $this->load->view('templates/footer');
+            }else{
+                $this->transaction_model->create_transaction();
+                redirect('transactions');
+            }
+
+            
+        }
     }
 ?>
