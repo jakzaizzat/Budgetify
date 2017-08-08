@@ -8,6 +8,7 @@
         public function get_transactions($id = FALSE){
 
             if($id === FALSE){
+                $this->db->order_by('created_at', 'desc');
                 $query = $this->db->get('transactions');
                 return $query->result_array();
             }
@@ -26,6 +27,12 @@
             );
 
             return $this->db->insert('transactions', $data);
+        }
+
+        public function delete_transaction($id){
+            $this->db->where('transaction_id', $id);
+            $this->db->delete('transactions');
+            return true;
         }
     }
 

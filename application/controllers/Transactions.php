@@ -41,8 +41,12 @@
                 $this->transaction_model->create_transaction();
                 redirect('transactions');
             }
+        }
 
-            
+        public function delete($id){
+            $this->transaction_model->delete_transaction($id);
+
+            redirect('transactions');
         }
     }
 ?>

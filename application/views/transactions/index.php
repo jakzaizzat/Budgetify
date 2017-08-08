@@ -21,7 +21,10 @@
             </span>
             <div class="details-name">
                 <span><?php echo $tran['transaction_category']; ?></span>
-                <p><?php echo $tran['transaction_name']; ?></p>
+                <p><a href="<?php echo base_url(); ?>transactions/<?php echo $tran['transaction_id']; ?>">
+                    <?php echo $tran['transaction_name']; ?>
+                    </a>
+                </p>
             </div>
         </div>
     </div>
