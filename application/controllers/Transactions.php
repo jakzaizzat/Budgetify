@@ -48,5 +48,24 @@
 
             redirect('transactions');
         }
+
+        public function edit($id){
+            $data['transaction'] = $this->transaction_model->get_transactions($id);
+
+            if(empty($data['transaction'])){
+                show_404();
+            }
+
+            $data['title'] = "Edit Post";
+
+            $this->load->view('templates/header');
+            $this->load->view('transactions/edit', $data);
+            $this->load->view('templates/footer');
+        }
+
+        public function update(){
+            $this->transaction_model->update_post();
+            redirect('transactions');
+        }
     }
 ?>

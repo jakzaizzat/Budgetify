@@ -13,4 +13,7 @@
             <i class="em em-wave"></i> Delete
         </button>
     </form>
+    <a class="button is-info" href="edit/<?php echo $transaction['transaction_id']; ?>">
+        <i class="em em-pencil"></i> Edit
+    </a>
 </div>

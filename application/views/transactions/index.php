@@ -37,13 +37,18 @@
     </div>
     <div class="column is-one-third">
         <div class="data-transaction has-text-centered">
-            <span class="transaction-expenses">- <?php echo $tran['transaction_price']; ?> MYR</span>
-            <p>Expenses</p>
+            <?php if( $tran['transaction_flow'] == 'Expenses') { ?>
+                <span class="transaction-expenses">- <?php echo $tran['transaction_price']; ?> MYR</span>
+            <?php } else { ?>
+                 <span class="transaction-income">+ <?php echo $tran['transaction_price']; ?> MYR</span>
+            <?php } ?>
+            
+            <p><?php echo $tran['transaction_flow']; ?></p>
         </div>
     </div>
 </div>
 <?php endforeach; ?>
 
 <div class="has-text-centered">
-    <a href="#" class="button btn-transaction">Add Transaction</a>
+    <a href="<?php base_url(); ?>transactions/create" class="button btn-transaction">Add Transaction</a>
 </div>

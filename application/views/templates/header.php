@@ -12,7 +12,7 @@
 	    <header class="nav">
 	      <div class="container">
 	        <div class="nav-left">
-	          <a class="nav-item">
+	          <a class="nav-item" href="<?php echo base_url(); ?>">
 	            <img src="<?php echo base_url(); ?>/assets/img/logo.png" alt="Logo">
 	          </a>
 	        </div>
@@ -22,7 +22,7 @@
 	          <span></span>
 	        </span>
 	        <div class="nav-right nav-menu">
-	          <a class="nav-item is-active" href="<?php echo base_url(); ?>">
+	          <a class="nav-item is-active" href="<?php echo base_url(); ?>transactions">
 	            Dashboard
 	          </a>
 	          <a class="nav-item">

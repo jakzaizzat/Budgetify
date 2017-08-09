@@ -34,6 +34,19 @@
             $this->db->delete('transactions');
             return true;
         }
+
+        public function update_post(){
+
+            $data = array(
+                'transaction_name' => $this->input->post('transaction_detail'),
+                'transaction_flow' => $this->input->post('flow'),
+                'transaction_category' => $this->input->post('category'),
+                'transaction_price' => $this->input->post('amount')
+            );
+            
+            $this->db->where('transaction_id', $this->input->post('id'));
+            return $this->db->update('transactions', $data);
+        }
     }
 
 ?>
