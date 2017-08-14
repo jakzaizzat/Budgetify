@@ -28,7 +28,9 @@
     <div class="control">
         <div class="select">
         <select name="category">
-            <option>Food</option>
+            <?php foreach($categories as $cat) { ?>
+                <option><?php echo $cat['category_name']; ?></option>
+            <?php } ?>
             <option>Transport</option>
         </select>
         </div>

@@ -41,7 +41,7 @@
     </div>
     <div class="column is-one-third">
         <div class="data-transaction has-text-centered">
-            <?php if( $tran['transaction_flow'] == 'Expenses') { ?>
+            <?php if( $tran['transaction_flow'] == 'Expense') { ?>
                 <span class="transaction-expenses">- <?php echo $tran['transaction_price']; ?> MYR</span>
             <?php } else { ?>
                  <span class="transaction-income">+ <?php echo $tran['transaction_price']; ?> MYR</span>

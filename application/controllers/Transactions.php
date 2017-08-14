@@ -29,6 +29,10 @@
 
         public function create(){
             $data['title'] = 'Create new transactions';
+            
+            $this->load->model('Category_model', 'category');
+            $data['categories'] = $this->category->get_category();
+
 
             $this->form_validation->set_rules('transaction_detail', 'Transaction Details', 'required');
             $this->form_validation->set_rules('flow', 'Flow', 'required');

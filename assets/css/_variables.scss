@@ -1,0 +1,55 @@
+
+
+/*    Fonts
+-------------------------------------------------------------- */
+$primary-font: "Roboto", helvetica, arial, sans-serif;
+$secondary-font: "Roboto", verdana, tahoma, sans-serif;
+
+
+/*    Colors
+-------------------------------------------------------------- */
+
+// General
+$black: #000;
+$white: #fff;
+$light_white: #f7f7f7;
+$bg: $light_white;
+$yellow : #ff9b00;
+$blue: #2f649a;
+$dark_blue : #122940;
+$dark_blue2: #1b3b5b;
+
+// Colors
+$gray: #d9d9d9;
+$line: #6d6d6d;
+$red: #fb3640;
+$green: #4ec6a0;
+
+
+$off-white: #fefefe;
+$dark-red : #852a2b;
+$maroon : #351a1a;
+// Typography
+$text-color: #333232; // used for main body text
+$h1: #f0cf18; // used for <h1>'s
+$h2: #bb282a; // used for <h2>'s
+$h3: $h2; // used for <h3>'s
+$link: #444d5d; // main link color
+$link-hover: #444; // main link hover color
+
+
+
+/*    Units
+-------------------------------------------------------------- */
+
+// Typography
+$font-size: .9375rem; // used for main body text
+$line-height: 1.875rem; // used for line-height on main body text
+$h1-size: 6.25rem; // used for size of content <h1>
+$h2-size: 2rem; // used for size of content <h2>
+$h3-size: 1.5rem; // used for size of content <h3>
+
+// Breakpoints
+$large-bp: 1300px;
+$med-bp: 1000px;
+$small-bp: 700px;

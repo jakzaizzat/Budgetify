@@ -23,23 +23,28 @@
             $balance = 0;
 
             foreach($transactions as $tran){
-                if($tran['transaction_flow'] == "Expenses"){
+                if($tran['transaction_flow'] == "Expense"){
                     $balance -= $tran['transaction_price'];
                 }else{
                     $balance += $tran['transaction_price'];
                 }
             }
+
             return $balance;
-            //return $query->result_array();
         }
 
         public function create_transaction(){
-            
+
+            //Get category id by name
+            $this->db->select('category_id')->where('category_name', $this->input->post('category'));
+            $cat = $this->db->get('categories')->row_array();
+
+
             $data = array(
                 'transaction_name' => $this->input->post('transaction_detail'),
                 'transaction_flow' => $this->input->post('flow'),
-                'transaction_category' => $this->input->post('category'),
-                'transaction_price' => $this->input->post('amount')
+                'transaction_price' => $this->input->post('amount'),
+                'category_id' => $cat['category_id']
             );
 
             return $this->db->insert('transactions', $data);

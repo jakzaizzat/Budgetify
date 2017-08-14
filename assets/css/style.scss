@@ -1,0 +1,111 @@
+
+
+//Import Google Fonts
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+@import url('https://afeld.github.io/emoji-css/emoji.css');
+
+// Partials
+@import "reset";
+@import "bulma";
+@import "variables";
+@import "mixins";
+@import "globals";
+
+body {
+	font-family: $primary-font;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+.nav{ padding: 20px 0; height: auto; 
+	.nav-item { color: $link; padding: 0.5rem 1.25rem;}
+	.nav-item.is-active{ color: $link; border-bottom: 1px solid $link; }
+}
+
+/** Budget **/
+
+.budget{ background-color: $bg;
+	.btn-transaction {
+		background: $red;
+		color: $white;
+	}
+	.btn-transaction:hover{
+		color: $red;
+		background: $white;
+		border-color: $red;
+	}
+}
+
+.budget-title{
+	background: $white;
+	padding: 20px 0;
+	border-bottom: 1px solid rgba($line,0.13);
+	.column { 
+		text-align: center;
+		h2{ color: $gray; font-weight: 500;}
+	}
+}
+
+.budget-data{
+	font-size: .8rem;
+	background: $white;
+	.icon{ margin-left: auto; }
+	span {
+		font-size: 1rem;
+		font-weight: 700;
+		color: $link;
+	}
+	.level-item div {
+		padding: 10px 20px;
+		margin-right: auto;
+	}
+
+	.data-details{
+		display: flex;
+		max-width: 80%;
+		margin: 0 auto;
+		.icon { flex: 1; display: flex; align-self: center; 
+			i { margin-left: auto; }
+		}
+		.details-name { flex: 1; padding-left: 20px;}
+	}
+
+	.data-dates{ padding: 10px 20px; }
+
+	.data-transaction{
+		padding: 10px 20px;
+		.transaction-expenses{ color: $red; }
+		.transaction-income{ color: $green; }
+	}
+}
+
+
+/** Dashboard **/
+
+.dashboard-right{
+	.button { background: $yellow; color: $black; font-weight: 700; box-shadow: 3px 3px 20px rgba($black,.5);border-color: $yellow; margin: 2rem 0;}
+	.card{ border-radius: 20px; margin-bottom: 50px;}
+	.budget-summary{
+		color: $white;
+		text-align: center;
+		font-weight: 400;
+		border-radius: 20px;
+		background: $dark_blue;
+		padding: 0;
+		font-size: 1rem;
+		.hero-body{ background: $dark_blue2; font-size: 2rem;padding: 1rem 0; font-weight: 700;}
+	}
+	.table{ padding: 50px 0;
+		thead{ color: $black; }
+		tbody{ color: $text-color; }
+	}
+}
+
+
+
+/** Footer **/
+.footer{
+	background: $white;
+	padding: 1.5rem;
+}
