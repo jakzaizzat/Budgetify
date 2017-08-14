@@ -5,6 +5,14 @@
 
             $data['transactions'] = $this->transaction_model->get_transactions();
 
+            
+            $this->load->model('Category_model', 'category');
+
+            foreach($data['transactions'] as $tran){
+                $data['category_names'][$tran['transaction_id']] = $this->category->get_name($tran['category_id']);
+            }
+
+
             $data['balance'] = $this->transaction_model->get_balance();
 
             $this->load->view('templates/header');

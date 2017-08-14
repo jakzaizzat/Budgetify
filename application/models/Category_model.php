@@ -13,6 +13,13 @@
             //return $query->row_array()
         }
 
+        public function get_name($id){
+            $this->db->select('category_name')->where('category_id', $id);
+
+            $query = $this->db->get('categories')->row_array();
+            return $query;
+        }
+
     }
 
 
