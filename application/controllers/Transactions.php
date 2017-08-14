@@ -5,6 +5,8 @@
 
             $data['transactions'] = $this->transaction_model->get_transactions();
 
+            $data['balance'] = $this->transaction_model->get_balance();
+
             $this->load->view('templates/header');
             $this->load->view('transactions/index', $data);
             $this->load->view('templates/footer');

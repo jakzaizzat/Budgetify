@@ -1,4 +1,8 @@
-<h2><?= $title ?></h2>
+
+
+<h2 class="title"><?= $title ?></h2>
+
+<h3 class="title">Wallet Balance: RM <?= $balance; ?></h3>
 
 <div class="columns is-mobile budget-title">
     <div class="column is-one-third">

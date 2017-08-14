@@ -17,6 +17,22 @@
             return $query->row_array();
         }
 
+        public function get_balance(){
+            $transactions = $this->db->get('transactions')->result_array();
+            
+            $balance = 0;
+
+            foreach($transactions as $tran){
+                if($tran['transaction_flow'] == "Expenses"){
+                    $balance -= $tran['transaction_price'];
+                }else{
+                    $balance += $tran['transaction_price'];
+                }
+            }
+            return $balance;
+            //return $query->result_array();
+        }
+
         public function create_transaction(){
             
             $data = array(
