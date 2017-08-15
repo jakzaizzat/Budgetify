@@ -64,7 +64,7 @@
             $data = array(
                 'transaction_name' => $this->input->post('transaction_detail'),
                 'transaction_flow' => $this->input->post('flow'),
-                'transaction_category' => $this->input->post('category'),
+                'category_id' => $this->input->post('category'),
                 'transaction_price' => $this->input->post('amount')
             );
             

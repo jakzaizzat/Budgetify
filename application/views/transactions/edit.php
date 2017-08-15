@@ -31,8 +31,9 @@
     <div class="control">
         <div class="select">
         <select name="category">
-            <option <?php if($transaction['transaction_category'] == 'Food') echo "selected" ?>>Food</option>
-            <option <?php if($transaction['transaction_category'] == 'Transport') echo "selected" ?>>Transport</option>
+            <?php foreach($category_names as $cat) { ?>
+                <option value="<?php echo $cat['category_id'] ?>" <?php if($cat['category_id'] == $transaction['category_id']) echo "selected" ?> ><?php echo $cat['category_name']; ?></option>
+            <?php } ?>
         </select>
         </div>
     </div>

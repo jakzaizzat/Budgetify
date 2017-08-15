@@ -24,9 +24,9 @@
                 <i class="em em-computer"></i>
             </span>
             <div class="details-name">
-                <span><?php echo $tran['category_id']; ?></span>
+                <span><?php echo $category_names[$tran['transaction_id']]['category_name']; ?></span>
                 <p><a href="<?php echo base_url(); ?>transactions/<?php echo $tran['transaction_id']; ?>">
-                    <?php echo $category_names[$tran['transaction_id']]['category_name']; ?>
+                    <?php echo  $tran['transaction_name']; ?>
                     </a>
                 </p>
             </div>

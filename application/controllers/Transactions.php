@@ -72,6 +72,9 @@
 
             $data['title'] = "Edit Post";
 
+            $this->load->model('Category_model', 'category');
+            $data['category_names']= $this->category->get_category();
+
             $this->load->view('templates/header');
             $this->load->view('transactions/edit', $data);
             $this->load->view('templates/footer');
