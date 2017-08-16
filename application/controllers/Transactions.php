@@ -53,13 +53,14 @@
                 $this->load->view('templates/footer');
             }else{
                 $this->transaction_model->create_transaction();
+                $this->session->set_flashdata('transaction_created', 'You have add new transactions');                
                 redirect('transactions');
             }
         }
 
         public function delete($id){
             $this->transaction_model->delete_transaction($id);
-
+            $this->session->set_flashdata('transaction_deleted', 'You have delete the transactions');
             redirect('transactions');
         }
 
@@ -82,6 +83,7 @@
 
         public function update(){
             $this->transaction_model->update_post();
+            $this->session->set_flashdata('post_updated', 'Transaction has been updated');
             redirect('transactions');
         }
     }

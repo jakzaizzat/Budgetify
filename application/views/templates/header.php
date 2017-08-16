@@ -43,3 +43,32 @@
     <div class="hero-body budget">
 		
 	    <div class="container">
+
+				<?php if($this->session->flashdata('user_registered')): ?>
+					<div class="notification is-primary">
+						<button class="delete"></button>
+						<?php echo $this->session->flashdata('user_registered'); ?>
+					</div>
+				<?php endif; ?>
+
+				<?php if($this->session->flashdata('transaction_created')): ?>
+					<div class="notification is-primary">
+						<button class="delete"></button>
+						<?php echo $this->session->flashdata('transaction_created'); ?>
+					</div>
+				<?php endif; ?>
+
+				<?php if($this->session->flashdata('post_updated')): ?>
+					<div class="notification is-primary">
+						<button class="delete"></button>
+						<?php echo $this->session->flashdata('post_updated'); ?>
+					</div>
+				<?php endif; ?>
+				
+				<?php if($this->session->flashdata('transaction_deleted')): ?>
+					<div class="notification is-primary">
+						<button class="delete"></button>
+						<?php echo $this->session->flashdata('transaction_deleted'); ?>
+					</div>
+				<?php endif; ?>
+			
