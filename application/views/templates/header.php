@@ -25,12 +25,21 @@
 	          <a class="nav-item is-active" href="<?php echo base_url(); ?>transactions">
 	            Dashboard
 	          </a>
-	          <a class="nav-item">
-	            Report
-	          </a>
-	          <a class="nav-item">
-	            Account
-              </a>
+
+						<?php if($this->session->userdata('logged_in')) : ?>
+							<a class="nav-item" href="<?php echo base_url(); ?>users/logout">
+								Logout
+							</a>
+						<?php endif; ?>
+						
+						<?php if(!$this->session->userdata('logged_in')) : ?>
+							<a class="nav-item" href="<?php echo base_url(); ?>users/register">
+								Register
+								</a>
+							<a class="nav-item" href="<?php echo base_url(); ?>users/login">
+								Login
+							</a>
+						<?php endif; ?>
               <a class="nav-item" href="<?php echo base_url(); ?>about">
 	            About
 	          </a>
@@ -69,6 +78,27 @@
 					<div class="notification is-primary">
 						<button class="delete"></button>
 						<?php echo $this->session->flashdata('transaction_deleted'); ?>
+					</div>
+				<?php endif; ?>
+
+				<?php if($this->session->flashdata('user_loggedin')): ?>
+					<div class="notification is-success">
+						<button class="delete"></button>
+						<?php echo $this->session->flashdata('user_loggedin'); ?>
+					</div>
+				<?php endif; ?>
+
+				<?php if($this->session->flashdata('login_failed')): ?>
+					<div class="notification is-danger">
+						<button class="delete"></button>
+						<?php echo $this->session->flashdata('login_failed'); ?>
+					</div>
+				<?php endif; ?>
+
+				<?php if($this->session->flashdata('user_logout')): ?>
+					<div class="notification is-info">
+						<button class="delete"></button>
+						<?php echo $this->session->flashdata('user_logout'); ?>
 					</div>
 				<?php endif; ?>
 			

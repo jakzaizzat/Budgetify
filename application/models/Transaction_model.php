@@ -47,7 +47,8 @@
                 'transaction_name' => $this->input->post('transaction_detail'),
                 'transaction_flow' => $this->input->post('flow'),
                 'transaction_price' => $this->input->post('amount'),
-                'category_id' => $cat['category_id']
+                'category_id' => $cat['category_id'],
+                'user_id' => $this->session->userdata('user_id')
             );
 
             return $this->db->insert('transactions', $data);

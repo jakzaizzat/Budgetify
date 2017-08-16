@@ -36,6 +36,12 @@
         }
 
         public function create(){
+
+            //Check Auth
+            if(!$this->session->userdata('logged_in')){
+                redirect('users/login');
+            }
+
             $data['title'] = 'Create new transactions';
             
             $this->load->model('Category_model', 'category');
@@ -59,12 +65,24 @@
         }
 
         public function delete($id){
+
+            //Check Auth
+            if(!$this->session->userdata('logged_in')){
+                redirect('users/login');
+            }
+
             $this->transaction_model->delete_transaction($id);
             $this->session->set_flashdata('transaction_deleted', 'You have delete the transactions');
             redirect('transactions');
         }
 
         public function edit($id){
+
+            //Check Auth
+            if(!$this->session->userdata('logged_in')){
+                redirect('users/login');
+            }
+
             $data['transaction'] = $this->transaction_model->get_transactions($id);
 
             if(empty($data['transaction'])){
@@ -82,6 +100,12 @@
         }
 
         public function update(){
+
+            //Check Auth
+            if(!$this->session->userdata('logged_in')){
+                redirect('users/login');
+            }
+            
             $this->transaction_model->update_post();
             $this->session->set_flashdata('post_updated', 'Transaction has been updated');
             redirect('transactions');
