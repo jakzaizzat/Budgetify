@@ -3,7 +3,7 @@
 <head>
 	<title>Budgetify</title>
 	<meta name="viewport" content="width=device-width">
-	<link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
 </head>
 <body>

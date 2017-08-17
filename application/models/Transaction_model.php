@@ -12,7 +12,8 @@
                 $this->db->join('categories', 'categories.category_id = transactions.category_id');
 
                 $query = $this->db->get('transactions');
-                return $query->result_array();
+                //return $query->result_array();
+                return json_encode($query->result_array());
             }
 
             $query = $this->db->get_where('transactions', array('transaction_id' => $id));
@@ -47,11 +48,12 @@
                 'transaction_name' => $this->input->post('transaction_detail'),
                 'transaction_flow' => $this->input->post('flow'),
                 'transaction_price' => $this->input->post('amount'),
-                'category_id' => $cat['category_id'],
+                'category_id' => $this->input->post('category_id'),
                 'user_id' => $this->session->userdata('user_id')
             );
 
-            return $this->db->insert('transactions', $data);
+            $this->db->insert('transactions', $data);
+            return true;
         }
 
         public function delete_transaction($id){
@@ -71,6 +73,24 @@
             
             $this->db->where('transaction_id', $this->input->post('id'));
             return $this->db->update('transactions', $data);
+        }
+
+        public function add_ajax_transaction(){
+            $data = array(
+                'transaction_name' => $this->input->post('transaction_detail'),
+                'transaction_flow' => $this->input->post('flow'),
+                'transaction_price' => $this->input->post('amount'),
+                'category_id' => $this->input->post('category_id'),
+                'user_id' => $this->session->userdata('user_id')
+            );
+
+            $this->db->insert('transactions', $data);
+            if($this->db->affected_rows() > 0){
+                return true;
+            }else{
+                return false;
+            }
+
         }
     }
 

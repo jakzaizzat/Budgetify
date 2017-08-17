@@ -8,9 +8,9 @@
             
             $this->load->model('Category_model', 'category');
 
-            foreach($data['transactions'] as $tran){
-                $data['category_names'][$tran['transaction_id']] = $this->category->get_name($tran['category_id']);
-            }
+            // foreach($data['transactions'] as $tran){
+            //     $data['category_names'][$tran['transaction_id']] = $this->category->get_name($tran['category_id']);
+            // }
 
 
             $data['balance'] = $this->transaction_model->get_balance();
@@ -18,6 +18,22 @@
             $this->load->view('templates/header');
             $this->load->view('transactions/index', $data);
             $this->load->view('templates/footer');
+        }
+
+        public function ajax_list(){
+            echo $this->transaction_model->get_transactions();
+            //echo "Hello";
+        }
+
+        public function ajax_add(){
+            $result =  $this->transaction_model->add_ajax_transaction();
+            $msg['success'] = false;
+
+            if($result){
+                $msg['success'] = true;
+            }
+
+            echo json_encode($msg);
         }
 
         public function view($id = NULL){

@@ -11,82 +11,82 @@
 
 <div class="columns">
     <div class="column is-8">
-            <div class="box">
-                <div class="columns is-mobile budget-title">
-                    <div class="column is-one-third">
-                        <h2>Category</h2>
-                    </div>
-                    <div class="column is-one-third">
-                        <h2>Dates</h2>
-                    </div>
-                    <div class="column is-one-third">
-                        <h2>Amounts</h2>
-                    </div>
-                </div>
 
-                <?php foreach($transactions as $tran) : ?>
-                    <div class="columns is-mobile budget-data">
-                        <div class="column is-one-third">
-                        
+        <div class="box">
+            <table class="table" id="table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Dates</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="table_body">
+                    
+                    <!-- <?php foreach($transactions as $tran) : ?>
+                    <tr class="budget-data">
+                        <td>
                             <div class="data-details">
                                 <span class="icon is-small text-right">
-                                        <img src="<?php echo base_url(); ?>/assets/img/pizza.svg"/>
-                                    </span>
-                                    <div class="details-name">
-                                        <span><?php echo $category_names[$tran['transaction_id']]['category_name']; ?></span>
-                                        <p>
+                                    <img src="<?php echo base_url(); ?>/assets/img/pizza.svg"/>
+                                </span>
+                                <div class="details-name">
+                                    <span><?php echo $category_names[$tran['transaction_id']]['category_name']; ?></span>
+                                    <p>
                                         <a href="<?php echo base_url(); ?>transactions/<?php echo $tran['transaction_id']; ?>">
-                    <?php echo  $tran['transaction_name']; ?>
-                    </a>
-                                        </p>
-                                    </div>
+                                        <?php echo  $tran['transaction_name']; ?>
+                                        </a>
+                                    </p>
+                                </div>
                             </div>
-
-                        </div>
-                        <div class="column is-one-third">
+                        </td>
+                        <td>
                             <div class="data-dates has-text-centered">
                                 <span><?php echo date('jS  F Y', strtotime($tran['created_at'])); ?></span>
                                 <p><?php echo date('l', strtotime($tran['created_at'])); ?></p>
                             </div>
-                        </div>
-                        <div class="column is-one-third">
+                        </td>
+                        <td>
                             <div class="data-transaction has-text-centered">
-                            <?php if( $tran['transaction_flow'] == 'Expense') { ?>
-                                <span class="transaction-expenses">- <?php echo $tran['transaction_price']; ?> MYR</span>
-                                <p>Expense</p>
-                            <?php } else { ?>
-                                <span class="transaction-income">+ <?php echo $tran['transaction_price']; ?> MYR</span>
-                                <p>Income</p>
-                            <?php } ?>
-                                
+                                <?php if( $tran['transaction_flow'] == 'Expense') { ?>
+                                    <span class="transaction-expenses">- <?php echo $tran['transaction_price']; ?> MYR</span>
+                                    <p>Expense</p>
+                                <?php } else { ?>
+                                    <span class="transaction-income">+ <?php echo $tran['transaction_price']; ?> MYR</span>
+                                    <p>Income</p>
+                                <?php } ?>
                             </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
-            </div>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?> -->
+
+                
+                </tbody>
+            </table>
+        </div>
 
     </div>
 
     <div class="column is-4">
         <div class="box">
-            <form class="form">
+            <form class="form" id="form" action="">
                 <h3 class="has-text-centered">Add New Transactions</h3>
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="text" placeholder="Transaction Name">
+                        <input class="input" type="text" placeholder="Transaction Name" name="transaction_detail">
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="number" placeholder="Amount">
+                        <input class="input" type="number" placeholder="Amount" name="amount">
                     </div>
                 </div>
                     
                 <div class="field">
                     <div class="control">
                         <div class="select">
-                            <select>
+                            <select name="flow">
                                 <option>Expense</option>
                                 <option>Income</option>
                             </select>
@@ -97,9 +97,9 @@
                 <div class="field">
                     <div class="control">
                         <div class="select">
-                            <select>
-                                <option>Food</option>
-                                <option>Transportation</option>
+                            <select name="category_id">
+                                <option value="1">Food</option>
+                                <option value="2">Transportation</option>
                             </select>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                     
                 <div class="field is-grouped">
                     <div class="control">
-                        <button class="button">Submit</button>
+                        <button class="button" onClick="save()" id="submit-btn">Submit</button>
                     </div>
                 </div>
 
