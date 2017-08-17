@@ -8,7 +8,7 @@
         public function get_transactions($id = FALSE){
 
             if($id === FALSE){
-                $this->db->order_by('transaction_id', 'desc');
+                $this->db->order_by('transaction_id', 'asc');
                 $this->db->join('categories', 'categories.category_id = transactions.category_id');
 
                 $query = $this->db->get('transactions');
@@ -81,6 +81,7 @@
                 'transaction_flow' => $this->input->post('flow'),
                 'transaction_price' => $this->input->post('amount'),
                 'category_id' => $this->input->post('category_id'),
+                'created_at' => date("Y/m/d"),
                 'user_id' => $this->session->userdata('user_id')
             );
 

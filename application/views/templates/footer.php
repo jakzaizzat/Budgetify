@@ -87,11 +87,22 @@
 						var i;
 
 						for(i = 0; i < data.length; i++){
+
+							var image = "";
+							if(data[i].category_name == "Food"){
+								image = "pizza";
+							}else if(data[i].category_name == "Transportation"){
+								image = "bus";
+							}else if(data[i].category_name == "Utilities"){
+								image = "electric";
+							}
+
+
 							html +=  '<tr class="budget-data">' +
 													'<td>' +
 														'<div class="data-details">' +
 															'<span class="icon is-small text-right">' +
-																'<img src="<?php echo base_url(); ?>/assets/img/pizza.svg"/>' +
+																'<img src="<?php echo base_url(); ?>/assets/img/'+ image +'.svg"/>' +
 															'</span>' +
 																'<div class="details-name">' +
 																	'<span>'+ data[i].category_name +'</span>' +
@@ -102,7 +113,6 @@
 													'<td>' +
 														'<div class="data-dates has-text-centered">' +
 															'<span>'+ data[i].created_at +'</span>' +
-															'<p>'+ data[i].created_at +'</p>' +
 														'</div>' +
 													'</td>' +
 													'<td>' +

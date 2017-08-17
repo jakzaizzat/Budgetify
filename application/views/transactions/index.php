@@ -4,7 +4,7 @@
     is-offset-one-quarter">
         <div class="balance_amount">
             RM<span id="balance"><?= $balance; ?></span>
-            <span class="real-calc"> + 10.00</span>
+            <span class="real-calc"></span>
         </div>
     </div>
 </div>
@@ -100,6 +100,7 @@
                             <select name="category_id">
                                 <option value="1">Food</option>
                                 <option value="2">Transportation</option>
+                                <option value="3">Utilities</option>   
                             </select>
                         </div>
                     </div>
