@@ -126,5 +126,18 @@
             $this->session->set_flashdata('post_updated', 'Transaction has been updated');
             redirect('transactions');
         }
+
+        public function dashboard(){
+            $data['name'] = "Aizzat";
+
+            $data['no_transactions'] = $this->transaction_model->count();
+            $data['no_expense'] = $this->transaction_model->sum('Expense');       
+            $data['no_income'] = $this->transaction_model->sum('Income');
+            $data['net_worth'] = $this->transaction_model->get_balance();
+
+            $this->load->view('templates/header');
+            $this->load->view('pages/dashboard',$data);
+            $this->load->view('templates/footer');
+        }
     }
 ?>

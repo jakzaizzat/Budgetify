@@ -1,4 +1,4 @@
-<h1>Hey, Aizzat</h1>
+<h1>Hey, <?= $name; ?></h1>
 				
     <div class="columns">
 
@@ -9,13 +9,13 @@
                 <div class="columns">
                     <div class="column is-half stat-detail">
                         <div class="stat-bg">
-                            <span>3721</span>
+                            <span><?= $no_transactions; ?></span>
                             <p>Performed Transactions</p>
                         </div>
                     </div>
                     <div class="column is-half stat-detail">
                             <div class="stat-bg">
-                                <span>3721</span>
+                                <span>RM <?= $net_worth; ?></span>
                                 <p>Performed Transactions</p>
                             </div>
                         </div>
@@ -24,14 +24,14 @@
                 <div class="columns">
                     <div class="column is-half stat-detail">
                         <div class="stat-bg">
-                            <span>3721</span>
-                            <p>Performed Transactions</p>
+                            <span>RM <?= $no_income['transaction_price']; ?></span>
+                            <p>Total Incomes</p>
                         </div>
                     </div>
                     <div class="column is-half stat-detail">
                             <div class="stat-bg">
-                                <span>3721</span>
-                                <p>Performed Transactions</p>
+                                <span>RM <?= $no_expense['transaction_price']; ?></span>
+                                <p>Total Expenses</p>
                             </div>
                         </div>
                 </div>

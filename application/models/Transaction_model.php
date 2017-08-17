@@ -93,6 +93,15 @@
             }
 
         }
+
+        public function count(){
+            return $this->db->count_all_results('transactions');
+        }
+
+        public function sum($flow){
+            $query =  $this->db->select_sum('transaction_price')->where('transaction_flow', $flow)->get('transactions');
+            return $query->row_array();
+        }
     }
 
 ?>
