@@ -13,7 +13,7 @@
 	      <div class="container">
 	        <div class="nav-left">
 	          <a class="nav-item" href="<?php echo base_url(); ?>">
-	            <img src="<?php echo base_url(); ?>/assets/img/logo.png" alt="Logo">
+	            <img src="<?php echo base_url(); ?>/assets/img/logo.svg" alt="Logo">
 	          </a>
 	        </div>
 	        <span class="nav-toggle">
@@ -22,10 +22,14 @@
 	          <span></span>
 	        </span>
 	        <div class="nav-right nav-menu">
-	          <a class="nav-item is-active" href="<?php echo base_url(); ?>transactions">
+	          <a class="nav-item" href="<?php echo base_url(); ?>dashboard">
 	            Dashboard
 	          </a>
+						<a class="nav-item" href="<?php echo base_url(); ?>transactions">
+	            Transactions
+						</a>
 
+						
 						<?php if($this->session->userdata('logged_in')) : ?>
 							<a class="nav-item" href="<?php echo base_url(); ?>users/logout">
 								Logout
@@ -40,9 +44,6 @@
 								Login
 							</a>
 						<?php endif; ?>
-              <a class="nav-item" href="<?php echo base_url(); ?>about">
-	            About
-	          </a>
 	        </div>
 	      </div>
 	    </header>

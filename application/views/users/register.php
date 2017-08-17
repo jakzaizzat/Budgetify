@@ -1,28 +1,36 @@
-<h2><?= $title; ?></h2>
-
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('users/register'); ?>
-    <div class="field">
-        <label class="label">Username</label>
-        <div class="control">
-            <input class="input" type="text" placeholder="Your Username" name="username">
-        </div>
-    </div>
-    <div class="field">
-        <label class="label">Password</label>
-        <div class="control">
-            <input class="input" type="password" placeholder="Your Password" name="password">
-        </div>
-    </div>
-    <div class="field">
-        <label class="label">Retype Password</label>
-        <div class="control">
-            <input class="input" type="password" placeholder="re-enter your password" name="password2">
-        </div>
-    </div>
+<div class="columns">
+    <div class="column is-half is-offset-one-quarter">
+            <?php 
+                $att = array('class' => 'form');
+                echo form_open('users/register', $att); 
+            ?>
+                <h3 class="has-text-centered">Sign Up</h3>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="text" placeholder="Username" name="username"> 
+                    </div>
+                </div>
 
-    <div class="control">
-        <button class="button is-primary">Submit</button>
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="password" placeholder="Password" name="password">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="password" placeholder="re-enter your password" name="password2">
+                    </div>
+                </div>
+                    
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button class="button">Submit</button>
+                    </div>
+                </div>
+
+            <?php echo form_close(); ?>
     </div>
-<?php echo form_close(); ?>
+</div>
