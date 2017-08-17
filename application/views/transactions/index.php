@@ -3,7 +3,7 @@
     <div class="column is-half
     is-offset-one-quarter">
         <div class="balance_amount">
-            <span>RM</span><?= $balance; ?>
+            RM<span id="balance"><?= $balance; ?></span>
             <span class="real-calc"> + 10.00</span>
         </div>
     </div>
@@ -76,12 +76,6 @@
                         <input class="input" type="text" placeholder="Transaction Name" name="transaction_detail">
                     </div>
                 </div>
-
-                <div class="field">
-                    <div class="control">
-                        <input class="input" type="number" placeholder="Amount" name="amount">
-                    </div>
-                </div>
                     
                 <div class="field">
                     <div class="control">
@@ -91,6 +85,12 @@
                                 <option>Income</option>
                             </select>
                         </div>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="number" placeholder="Amount" name="amount">
                     </div>
                 </div>
 

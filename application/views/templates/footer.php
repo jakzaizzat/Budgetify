@@ -21,13 +21,33 @@
 			list_transactions();
 			$('#table').DataTable();
 
+			
+			var balance = parseFloat($('#balance').text());
+
+			//Get value from user
+			$('input[name=amount]').keyup(function(){
+				var val = parseFloat($('input[name=amount]').val());
+				
+				var flow_balance = $('select[name=flow]').val();
+
+				if(flow_balance == "Expense"){
+					var new_balance = balance - val;
+				}else{
+					var new_balance = balance + val;
+				}
+				$('#balance').text(new_balance.toFixed(2));
+
+			});
+
 			$('#submit-btn').click(function(e){
 				e.preventDefault();
 				var url = $('#form').attr('action');
 				var data = $('#form').serialize();
 
-				console.log(data);
+				var amount = $('input[name=amount]').val();
+				var flow = $('input[name=flow]').val();
 
+				
 				$.ajax({
 					type: 'ajax',
 					method: 'post',
@@ -46,7 +66,13 @@
 					}
 				}).done(function(){
 					list_transactions();
-				})
+				});
+
+				$('input[name=transaction_detail]').val('');
+				$('input[name=amount]').val('');
+				$('input[name=flow]').val('');
+				$('input[name=category_id]').val(''); 
+
 
 			});
 
@@ -80,12 +106,19 @@
 														'</div>' +
 													'</td>' +
 													'<td>' +
-														'<div class="data-transaction has-text-centered">' +
-																'<span class="transaction-expenses"> -'+ data[i].transaction_price + 'MYR </span>' +
-																'<p>'+ data[i].transaction_flow +'</p>' +
+														'<div class="data-transaction has-text-centered">' ;
+
+														if(data[i].transaction_flow == "Expense"){
+																html += '<span class="transaction-expenses"> -'+ data[i].transaction_price + 'MYR </span>' +
+																'<p>'+ data[i].transaction_flow +'</p>';
+														} else{
+																html += '<span class="transaction-income"> +'+ data[i].transaction_price + 'MYR </span>' +
+																'<p>'+ data[i].transaction_flow +'</p>';
+														}
+							html += 							
 														'</div>' +
 													'</td>' +
-                   ' </tr>';
+                   						' </tr>';
 						}
 						$('#table_body').html(html);
 					},
