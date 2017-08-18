@@ -16,9 +16,10 @@
             <table class="table" id="table">
                 <thead>
                     <tr>
-                        <th>Category</th>
-                        <th>Dates</th>
-                        <th>Amount</th>
+                        <th width="30%">Category</th>
+                        <th width="30%">Dates</th>
+                        <th width="30%">Amount</th>
+                        <th width="10%">Action</th>
                     </tr>
                 </thead>
                 <tbody id="table_body">

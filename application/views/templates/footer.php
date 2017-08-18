@@ -76,6 +76,7 @@
 
 			});
 
+
 			function list_transactions(){
 				$.ajax({
 					type: 'ajax',
@@ -128,6 +129,19 @@
 							html += 							
 														'</div>' +
 													'</td>' +
+													
+													'<td>' +
+														'<div class="table-action">' +
+															'<a href="<?php echo base_url(); ?>transactions/edit/'+ data[i].transaction_id +'">' +
+																'<i class="em em-wrench"></i> Edit' +
+															'</a>' +
+															'<form action="http://localhost/budgetify/transactions/delete/'+ data[i].transaction_id +'">' +
+																'<button type="submit" class="button is-danger">' +
+																	'<i class="em em-x"></i>Delete' +
+																'</button>' +
+															'</form>' +
+														'</div>' +
+													'</td>' +
                    						' </tr>';
 						}
 						$('#table_body').html(html);
@@ -137,7 +151,51 @@
 					}
 				})
 			}
+			
+
+		
 		});
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+	<script type="text/javascript">
+	$(function(){
+	  $.getJSON("transactions/ajax_list", function (result) {
+	    
+		var flow = [],amount=[], dates=[];
+
+	    for (var i = 0; i < result.length; i++) {
+	        flow.push(result[i].transaction_flow);
+	        amount.push(result[i].transaction_price);
+			dates.push(result[i].created_at);
+
+	        console.log(i);
+	        console.log("Flow " + result[i].transaction_flow);
+	        console.log("Amount " + result[i].transaction_price);
+	        console.log("Date " + result[i].created_at);
+
+	    }
+	    var buyerData = {
+	      labels : dates,
+	      datasets : [
+	        {
+	          data : amount,
+	          backgroundColor: [
+		            "#FF6384",
+		            "#4BC0C0",
+		            "#FFCE56"
+		        ]
+	        }
+	      ]
+	    };
+	    var buyers = document.getElementById('myChart').getContext('2d');
+	    
+	    var myLineChart = new Chart(buyers, {
+		    type: 'line',
+		    data: buyerData
+		});
+	  });
+	});
 	</script>
 
 </body>

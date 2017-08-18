@@ -139,5 +139,6 @@
             $this->load->view('pages/dashboard',$data);
             $this->load->view('templates/footer');
         }
+
     }
 ?>
