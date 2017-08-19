@@ -24,44 +24,6 @@
                 </thead>
                 <tbody id="table_body">
                     
-                    <!-- <?php foreach($transactions as $tran) : ?>
-                    <tr class="budget-data">
-                        <td>
-                            <div class="data-details">
-                                <span class="icon is-small text-right">
-                                    <img src="<?php echo base_url(); ?>/assets/img/pizza.svg"/>
-                                </span>
-                                <div class="details-name">
-                                    <span><?php echo $category_names[$tran['transaction_id']]['category_name']; ?></span>
-                                    <p>
-                                        <a href="<?php echo base_url(); ?>transactions/<?php echo $tran['transaction_id']; ?>">
-                                        <?php echo  $tran['transaction_name']; ?>
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="data-dates has-text-centered">
-                                <span><?php echo date('jS  F Y', strtotime($tran['created_at'])); ?></span>
-                                <p><?php echo date('l', strtotime($tran['created_at'])); ?></p>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="data-transaction has-text-centered">
-                                <?php if( $tran['transaction_flow'] == 'Expense') { ?>
-                                    <span class="transaction-expenses">- <?php echo $tran['transaction_price']; ?> MYR</span>
-                                    <p>Expense</p>
-                                <?php } else { ?>
-                                    <span class="transaction-income">+ <?php echo $tran['transaction_price']; ?> MYR</span>
-                                    <p>Income</p>
-                                <?php } ?>
-                            </div>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?> -->
-
-                
                 </tbody>
             </table>
         </div>
@@ -91,19 +53,19 @@
 
                 <div class="field">
                     <div class="control">
-                        <input class="input" type="number" placeholder="Amount" name="amount">
+                        <div class="select">
+                            <select name="category_id">
+                                <?php foreach($categories as $cat) { ?>
+                                    <option value="<?php echo $cat['category_id']; ?>"><?php echo $cat['category_name']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <div class="select">
-                            <select name="category_id">
-                                <option value="1">Food</option>
-                                <option value="2">Transportation</option>
-                                <option value="3">Utilities</option>   
-                            </select>
-                        </div>
+                        <input class="input" type="number" placeholder="Amount" name="amount">
                     </div>
                 </div>
                     

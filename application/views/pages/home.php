@@ -1,74 +1,28 @@
-<div class="columns dashboard">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Budgetify</title>
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"/>
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
+</head>
+<body>
 
-    <div class="column is-8 dashboard-left">
-        <div class="card is-info">
-            <div class="card-content">
-                <div class="content">
-                   <div class="notification is-primary">
-                        <div class="columns">
-                            <div class="column is-8">
-                                Dinning Out
-                            </div>
-                            <div class="column is-4">
-                                RM 15.08 remaining
-                            </div>
-                        </div>
-                    </div>
-                    <div class="notification is-success">
-                        <div class="columns">
-                            <div class="column is-8">
-                                Dinning Out
-                            </div>
-                            <div class="column is-4">
-                                RM 15.08 remaining
-                            </div>
-                        </div>
-                    </div>
-                    <div class="notification">
-                        <div class="columns">
-                            <div class="column is-8">
-                                Dinning Out
-                            </div>
-                            <div class="column is-4">
-                                RM 15.08 remaining
-                            </div>
-                        </div>
-                    </div>
-                    <a class="button is-danger">New Budget</a>
-                </div>
-            </div>
+    <section class="hero is-fullheight is-success">
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">
+                Budgetify
+                </h1>
+                <h2 class="subtitle">
+                financial tracker
+                </h2>
+                <a class="button is-primary" href="<?php echo base_url(); ?>login">Login</a>
+                <a class="button is-danger" href="<?php echo base_url(); ?>register">Register</a>
         </div>
-    </div>
+        </div>
+    </section>
 
-    <div class="column is-4 dashboard-right">
-        <a class="button">Create a new Expense</a>
-        <div class="card">
-            <div class="card-content budget-summary">
-                <div class="hero-head">Spent tis cycle</div>
-                <div class="hero-body">RM 105.60</div>
-                <div class="hero-foot">Cycle start August 10, 2010 (Week 3)</div>
-            </div>
-        </div>
-        <table class="table is-fullwidth">
-            <thead><tr>Recent Expenses</tr></thead>
-            <tbody>
-                <tr>
-                    <td>Moxie Grill <br>Dinning Out</td>
-                    <td>RM 87.39</td>
-                </tr>
-                <tr>
-                    <td>Moxie Grill <br>Dinning Out</td>
-                    <td>RM 87.39</td>
-                </tr>
-                <tr>
-                    <td>Moxie Grill <br>Dinning Out</td>
-                    <td>RM 87.39</td>
-                </tr>
-                <tr>
-                    <td>Moxie Grill <br>Dinning Out</td>
-                    <td>RM 87.39</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
+</body>
+
+</html>

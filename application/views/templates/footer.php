@@ -17,6 +17,12 @@
 	<script>
 		$(function(){
 
+
+			//Close notification			
+			$('.notification > button.delete').click(function(){
+				$(this).parent().addClass('is-hidden');
+			});
+
 			$('#form').attr('action', '<?php echo base_url() ?>transactions/ajax_add');
 			list_transactions();
 			$('#table').DataTable();
@@ -96,6 +102,8 @@
 								image = "bus";
 							}else if(data[i].category_name == "Utilities"){
 								image = "electric";
+							}else if(data[i].category_name == "Salary"){
+								image = "salary";
 							}
 
 
@@ -136,7 +144,7 @@
 																'<i class="em em-wrench"></i> Edit' +
 															'</a>' +
 															'<form action="http://localhost/budgetify/transactions/delete/'+ data[i].transaction_id +'">' +
-																'<button type="submit" class="button is-danger">' +
+																'<button type="submit" class="button is-danger" onclick="confirm()" >' +
 																	'<i class="em em-x"></i>Delete' +
 																'</button>' +
 															'</form>' +
@@ -152,7 +160,9 @@
 				})
 			}
 			
-
+			function confirm(){
+				confirm("Are you sure want to delete this item?");
+			}
 		
 		});
 	</script>
@@ -168,11 +178,6 @@
 	        flow.push(result[i].transaction_flow);
 	        amount.push(result[i].transaction_price);
 			dates.push(result[i].created_at);
-
-	        console.log(i);
-	        console.log("Flow " + result[i].transaction_flow);
-	        console.log("Amount " + result[i].transaction_price);
-	        console.log("Date " + result[i].created_at);
 
 	    }
 	    var buyerData = {
@@ -197,6 +202,6 @@
 	  });
 	});
 	</script>
-
+	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/script.js"/>
 </body>
 </html>

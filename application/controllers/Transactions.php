@@ -11,7 +11,10 @@
             // foreach($data['transactions'] as $tran){
             //     $data['category_names'][$tran['transaction_id']] = $this->category->get_name($tran['category_id']);
             // }
-
+            
+            $this->load->model('Category_model', 'category');
+            $data['categories'] = $this->category->get_category();
+            
 
             $data['balance'] = $this->transaction_model->get_balance();
 
@@ -101,11 +104,15 @@
 
             $data['transaction'] = $this->transaction_model->get_transactions($id);
 
+            
+            $this->load->model('Category_model', 'category');
+            $data['categories'] = $this->category->get_category();
+
             if(empty($data['transaction'])){
                 show_404();
             }
 
-            $data['title'] = "Edit Post";
+            $data['title'] = "Edit Transaction";
 
             $this->load->model('Category_model', 'category');
             $data['category_names']= $this->category->get_category();

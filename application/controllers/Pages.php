@@ -8,9 +8,15 @@
             }
 
             $data['title'] = ucfirst($page);
-            $this->load->view('templates/header');
-            $this->load->view('pages/'. $page, $data);
-            $this->load->view('templates/footer');
+            
+            //Check Auth
+            if(!$this->session->userdata('logged_in')){
+                $this->load->view('pages/'. $page, $data);
+            }else{
+                redirect('dashboard');
+            }
+
+            
         }
     }
 

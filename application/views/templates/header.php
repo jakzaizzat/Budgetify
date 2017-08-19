@@ -8,46 +8,45 @@
 </head>
 <body>
     <section class="hero">
-	  <div class="hero-head">
-	    <header class="nav">
-	      <div class="container">
-	        <div class="nav-left">
-	          <a class="nav-item" href="<?php echo base_url(); ?>">
-	            <img src="<?php echo base_url(); ?>/assets/img/logo.svg" alt="Logo">
-	          </a>
-	        </div>
-	        <span class="nav-toggle">
-	          <span></span>
-	          <span></span>
-	          <span></span>
-	        </span>
-	        <div class="nav-right nav-menu">
-	          <a class="nav-item" href="<?php echo base_url(); ?>dashboard">
-	            Dashboard
-	          </a>
-						<a class="nav-item" href="<?php echo base_url(); ?>transactions">
-	            Transactions
-						</a>
-
-						
-						<?php if($this->session->userdata('logged_in')) : ?>
-							<a class="nav-item" href="<?php echo base_url(); ?>users/logout">
-								Logout
+			<div class="hero-head">
+				<header class="nav">
+					<div class="container">
+						<div class="nav-left">
+							<a class="nav-item" href="<?php echo base_url(); ?>">
+								<img src="<?php echo base_url(); ?>/assets/img/logo.svg" alt="Logo">
 							</a>
-						<?php endif; ?>
-						
-						<?php if(!$this->session->userdata('logged_in')) : ?>
-							<a class="nav-item" href="<?php echo base_url(); ?>users/register">
-								Register
+						</div>
+						<span class="nav-toggle">
+							<span></span>
+							<span></span>
+							<span></span>
+						</span>
+						<div class="nav-right nav-menu">
+							
+							<?php if($this->session->userdata('logged_in')) : ?>
+								<a class="nav-item" href="<?php echo base_url(); ?>dashboard">
+									Dashboard
 								</a>
-							<a class="nav-item" href="<?php echo base_url(); ?>users/login">
-								Login
-							</a>
-						<?php endif; ?>
-	        </div>
-	      </div>
-	    </header>
-	  </div>
+								<a class="nav-item" href="<?php echo base_url(); ?>transactions">
+									Transactions
+								</a>
+								<a class="nav-item" href="<?php echo base_url(); ?>users/logout">
+									Logout
+								</a>
+							<?php endif; ?>
+							
+							<?php if(!$this->session->userdata('logged_in')) : ?>
+								<a class="nav-item" href="<?php echo base_url(); ?>users/register">
+									Register
+									</a>
+								<a class="nav-item" href="<?php echo base_url(); ?>users/login">
+									Login
+								</a>
+							<?php endif; ?>
+						</div>
+					</div>
+				</header>
+			</div>
     </section>
     
     <div class="hero-body budget">

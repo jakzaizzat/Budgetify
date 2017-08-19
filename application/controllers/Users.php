@@ -71,7 +71,7 @@
             $this->session->unset_userdata('logged_in');
 
             $this->session->set_flashdata('user_logout', 'You are now log out');
-            redirect('users/login');
+            redirect('/');
         }
 
         function check_username_exists($username){
