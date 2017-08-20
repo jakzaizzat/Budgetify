@@ -44,10 +44,17 @@
             echo json_encode($msg);
         }
 
-        public function chart_api(){
+        public function chart_api_income(){
         
             $id = $this->session->userdata('user_id');
-            $result = $this->transaction_model->get_total_per_day($id);
+            $result = $this->transaction_model->get_income_per_day($id, 'Income');
+            echo $result;
+        }
+
+        public function chart_api_expense(){
+            
+            $id = $this->session->userdata('user_id');
+            $result = $this->transaction_model->get_income_per_day($id, 'Expense');
             echo $result;
         }
 
@@ -147,6 +154,12 @@
         }
 
         public function dashboard(){
+            
+            //Check Auth
+            if(!$this->session->userdata('logged_in')){
+                redirect('users/login');
+            }
+            
             $id = $this->session->userdata('user_id');
             
 

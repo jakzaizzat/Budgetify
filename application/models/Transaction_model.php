@@ -7,8 +7,8 @@
 
         public function get_transactions($id){
 
-                $this->db->order_by('transaction_id', 'desc');
                 $this->db->join('categories', 'categories.category_id = transactions.category_id')->where('user_id', $id);
+                $this->db->order_by('created_at', 'desc');
                 $query = $this->db->get('transactions');
                 //return $query->result_array();
                 return json_encode($query->result_array());
@@ -79,7 +79,7 @@
                 'transaction_flow' => $this->input->post('flow'),
                 'transaction_price' => $this->input->post('amount'),
                 'category_id' => $this->input->post('category_id'),
-                'created_at' => date("Y/m/d"),
+                'created_at' => $this->input->post('date'),
                 'user_id' => $this->session->userdata('user_id')
             );
 
@@ -104,10 +104,11 @@
         }
 
 
-        public function get_total_per_day($id){
+        public function get_income_per_day($id, $flow){
             $this->db->where('user_id', $id);
-            $this->db->select_sum('transaction_price')->select('created_at');
+            $this->db->select_sum('transaction_price')->select('created_at')->where('transaction_flow', $flow);
             $query = $this->db->group_by('created_at')->get('transactions');
+
             return json_encode($query->result_array());
         }
     }

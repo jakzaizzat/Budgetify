@@ -68,6 +68,12 @@
                         <input class="input" type="number" placeholder="Amount" name="amount">
                     </div>
                 </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input" id="datePicker" name="date" type="date">
+                    </div>
+                </div>
                     
                 <div class="field is-grouped">
                     <div class="control">

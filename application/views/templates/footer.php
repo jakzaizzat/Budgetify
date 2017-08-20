@@ -23,6 +23,10 @@
 				$(this).parent().addClass('is-hidden');
 			});
 
+			//Set default date
+			var date = new Date().toISOString().slice(0,10);;
+			$('#datePicker').val(date);
+
 			$('#form').attr('action', '<?php echo base_url() ?>transactions/ajax_add');
 			list_transactions();
 			$('#table').DataTable();
@@ -114,8 +118,8 @@
 																'<img src="<?php echo base_url(); ?>/assets/img/'+ image +'.svg"/>' +
 															'</span>' +
 																'<div class="details-name">' +
-																	'<span>'+ data[i].category_name +'</span>' +
-																	' <p>'+ data[i].transaction_name +'</p>' +
+																	'<span>'+ data[i].transaction_name +'</span>' +
+																	' <p>'+ data[i].category_name +'</p>' +
 																'</div>' +
 														'</div>' +
 													'</td>' +
@@ -170,33 +174,66 @@
 
 	<script type="text/javascript">
 	$(function(){
-	  $.getJSON("transactions/chart_api", function (result) {
-	    
-		var dates=[], amount=[];
+		
+		var income_api = "transactions/chart_api_income"; 
+		var expense_api = "transactions/chart_api_expense"; 
+		
+		var dates=[], income=[], expense=[];
 
-	    for (var i = 0; i < result.length; i++) {
-	        dates.push(result[i].created_at);
-	        amount.push(result[i].transaction_price);
+		$.when(
+			$.getJSON(income_api),
+			$.getJSON(expense_api)		
+		).done(function(result1,result2){
+			
+			//console.log(result1[0].length);
+			//console.log(result2);
 
-	    }
-	    var buyerData = {
-	      labels : dates,
-	      datasets : [
-	        {
-	          data : amount,
-	          backgroundColor: [
-		            "#4BC0C0"
-		        ]
-	        }
-	      ]
-	    };
-	    var buyers = document.getElementById('myChart').getContext('2d');
+			console.log("---------Income--------");
+
+			//for (var i = 0; i < result1[0].length; i++) {
+			//	dates.push(result1[0][i].created_at);
+			//	income.push(result1[0][i].transaction_price);
+				//console.log(result1[0][i].created_at + " = " + result1[0][i].transaction_price );
+				
+			//}
+			
+			console.log("---------Expense--------");
+
+			for (var i = 0; i < result2[0].length; i++) {
+				dates.push(result2[0][i].created_at);
+				expense.push(result2[0][i].transaction_price);
+				//console.log(result2[0][i].created_at + " = " + result2[0][i].transaction_price );
+			}
+
+			console.log(dates);
+
+			var uniqueDates = [];
+			$.each(dates, function(i, el){
+				if($.inArray(el, uniqueDates) === -1) uniqueDates.push(el);
+			});
+			uniqueDates.sort();
+			console.log(uniqueDates);
+
+			var buyerData = {
+				labels : dates,
+				datasets : [
+					{
+					label: 'Expenses',
+					data : expense,
+					backgroundColor: ["#4BC0C0"]
+					}
+				]
+			};
+
+			var buyers = document.getElementById('myChart').getContext('2d');
 	    
-	    var myLineChart = new Chart(buyers, {
-		    type: 'line',
-		    data: buyerData
+			var myLineChart = new Chart(buyers, {
+				type: 'line',
+				data: buyerData
+			});
+
 		});
-	  });
+
 	});
 	</script>
 	<script type="text/javascript" src="<?php echo base_url() ?>assets/js/script.js"/>
