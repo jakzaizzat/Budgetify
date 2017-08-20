@@ -20,7 +20,7 @@
 
                 $this->session->set_flashdata('user_registered', 'You are now register and can log in');
 
-                redirect('transactions');
+                redirect('login');
             }
 
         }
@@ -71,7 +71,7 @@
             $this->session->unset_userdata('logged_in');
 
             $this->session->set_flashdata('user_logout', 'You are now log out');
-            redirect('/');
+            redirect('/login');
         }
 
         function check_username_exists($username){

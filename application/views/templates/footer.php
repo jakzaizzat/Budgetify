@@ -170,14 +170,13 @@
 
 	<script type="text/javascript">
 	$(function(){
-	  $.getJSON("transactions/ajax_list", function (result) {
+	  $.getJSON("transactions/chart_api", function (result) {
 	    
-		var flow = [],amount=[], dates=[];
+		var dates=[], amount=[];
 
 	    for (var i = 0; i < result.length; i++) {
-	        flow.push(result[i].transaction_flow);
+	        dates.push(result[i].created_at);
 	        amount.push(result[i].transaction_price);
-			dates.push(result[i].created_at);
 
 	    }
 	    var buyerData = {
@@ -186,9 +185,7 @@
 	        {
 	          data : amount,
 	          backgroundColor: [
-		            "#FF6384",
-		            "#4BC0C0",
-		            "#FFCE56"
+		            "#4BC0C0"
 		        ]
 	        }
 	      ]

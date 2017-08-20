@@ -3,7 +3,9 @@
         public function index(){
             $data['title'] = 'Latest transactions';
 
-            $data['transactions'] = $this->transaction_model->get_transactions();
+
+            $id = $this->session->userdata('user_id');
+            $data['transactions'] = $this->transaction_model->get_transactions($id);
 
             
             $this->load->model('Category_model', 'category');
@@ -16,7 +18,7 @@
             $data['categories'] = $this->category->get_category();
             
 
-            $data['balance'] = $this->transaction_model->get_balance();
+            $data['balance'] = $this->transaction_model->get_balance($id);
 
             $this->load->view('templates/header');
             $this->load->view('transactions/index', $data);
@@ -24,7 +26,10 @@
         }
 
         public function ajax_list(){
-            echo $this->transaction_model->get_transactions();
+            
+            $id = $this->session->userdata('user_id');
+
+            echo $this->transaction_model->get_transactions($id);
             //echo "Hello";
         }
 
@@ -37,6 +42,13 @@
             }
 
             echo json_encode($msg);
+        }
+
+        public function chart_api(){
+        
+            $id = $this->session->userdata('user_id');
+            $result = $this->transaction_model->get_total_per_day($id);
+            echo $result;
         }
 
         public function view($id = NULL){
@@ -135,12 +147,15 @@
         }
 
         public function dashboard(){
-            $data['name'] = "Aizzat";
+            $id = $this->session->userdata('user_id');
+            
 
-            $data['no_transactions'] = $this->transaction_model->count();
-            $data['no_expense'] = $this->transaction_model->sum('Expense');       
-            $data['no_income'] = $this->transaction_model->sum('Income');
-            $data['net_worth'] = $this->transaction_model->get_balance();
+            $data['name'] = $this->session->userdata('username');
+
+            $data['no_transactions'] = $this->transaction_model->count($id);
+            $data['no_expense'] = $this->transaction_model->sum('Expense', $id);       
+            $data['no_income'] = $this->transaction_model->sum('Income', $id);
+            $data['net_worth'] = $this->transaction_model->get_balance($id);
 
             $this->load->view('templates/header');
             $this->load->view('pages/dashboard',$data);

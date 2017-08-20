@@ -16,7 +16,7 @@
                     <div class="column is-half stat-detail">
                             <div class="stat-bg">
                                 <span>RM <?= $net_worth; ?></span>
-                                <p>Performed Transactions</p>
+                                <p>Wallet<br> Balance</p>
                             </div>
                         </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div class="box stats bot-report">
                     <h2>Transaction Stats</h2>
                     
-                    <span>Keep Going, Jakz</span>
+                    <span>Keep Going, <?= $name; ?></span>
                     <p>You've been keeping your track record green, which means that you are on spot with your pre-adjusted budgets</p>
 
                 </div>

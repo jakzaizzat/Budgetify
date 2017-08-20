@@ -5,26 +5,24 @@
             $this->load->database();
         }
 
-        public function get_transactions($id = FALSE){
+        public function get_transactions($id){
 
-            if($id === FALSE){
                 $this->db->order_by('transaction_id', 'desc');
-                $this->db->join('categories', 'categories.category_id = transactions.category_id');
-
+                $this->db->join('categories', 'categories.category_id = transactions.category_id')->where('user_id', $id);
                 $query = $this->db->get('transactions');
                 //return $query->result_array();
                 return json_encode($query->result_array());
-            }
-
-            $query = $this->db->get_where('transactions', array('transaction_id' => $id));
-
-            return $query->row_array();
         }
 
-        public function get_balance(){
+        public function get_balance($id){
+            $this->db->where('user_id', $id);
             $transactions = $this->db->get('transactions')->result_array();
             
-            $balance = 0;
+
+            $this->db->select('balance')->where('id', $id);
+            $query = $this->db->get('users')->row_array();
+
+            $balance = $query['balance'];
 
             foreach($transactions as $tran){
                 if($tran['transaction_flow'] == "Expense"){
@@ -94,13 +92,23 @@
 
         }
 
-        public function count(){
+        public function count($id){
+            $this->db->where('user_id', $id);
             return $this->db->count_all_results('transactions');
         }
 
-        public function sum($flow){
+        public function sum($flow,$id){
+            $this->db->where('user_id', $id);
             $query =  $this->db->select_sum('transaction_price')->where('transaction_flow', $flow)->get('transactions');
             return $query->row_array();
+        }
+
+
+        public function get_total_per_day($id){
+            $this->db->where('user_id', $id);
+            $this->db->select_sum('transaction_price')->select('created_at');
+            $query = $this->db->group_by('created_at')->get('transactions');
+            return json_encode($query->result_array());
         }
     }
 

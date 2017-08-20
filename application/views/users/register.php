@@ -24,6 +24,12 @@
                         <input class="input" type="password" placeholder="re-enter your password" name="password2">
                     </div>
                 </div>
+
+                <div class="field">
+                    <div class="control">
+                        <input class="input" type="number" placeholder="Please enter your current balance" name="balance">
+                    </div>
+                </div>
                     
                 <div class="field is-grouped">
                     <div class="control">

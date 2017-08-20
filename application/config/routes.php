@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 $route['dashboard'] = 'transactions/dashboard';
+$route['transactions/chart_api'] = 'transactions/chart_api';
 $route['transactions/ajax_add'] = 'transactions/ajax_add';
 $route['transactions/ajax_list'] = 'transactions/ajax_list';
 $route['transactions/create'] = 'transactions/create';  

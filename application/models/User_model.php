@@ -10,7 +10,8 @@
               
             $data = array(
                 'username' => $this->input->post('username'),
-                'password' => $enc_password
+                'password' => $enc_password,
+                'balance' => $this->input->post('balance')
             );
 
             return $this->db->insert('users', $data);
