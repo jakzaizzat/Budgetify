@@ -5,13 +5,26 @@
             $this->load->database();
         }
 
-        public function get_transactions($id){
+        public function get_transactions($id = FALSE){
+            
+            $user_id = $this->session->userdata('user_id');
+            
+            if($id === FALSE){
+                    $this->db->join('categories', 'categories.category_id = transactions.category_id')->where('user_id', $user_id);
+                    $this->db->order_by('created_at', 'desc');
+                    $query = $this->db->get('transactions');
+                    //return $query->result_array();
+                    return json_encode($query->result_array());
+            }
+            $query = $this->db->get_where('transactions', array('transaction_id' => $id));
+            return $query->row_array();
+                
+        }
 
-                $this->db->join('categories', 'categories.category_id = transactions.category_id')->where('user_id', $id);
-                $this->db->order_by('created_at', 'desc');
-                $query = $this->db->get('transactions');
-                //return $query->result_array();
-                return json_encode($query->result_array());
+        public function edit_transaction($id){
+            $query = $this->db->get_where('transactions', array('transaction_id' => $id));
+            
+            return $query->row_array();
         }
 
         public function get_balance($id){
@@ -66,7 +79,8 @@
                 'transaction_name' => $this->input->post('transaction_detail'),
                 'transaction_flow' => $this->input->post('flow'),
                 'category_id' => $this->input->post('category'),
-                'transaction_price' => $this->input->post('amount')
+                'transaction_price' => $this->input->post('amount'),
+                'created_at' => $this->input->post('date')
             );
             
             $this->db->where('transaction_id', $this->input->post('id'));

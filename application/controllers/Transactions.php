@@ -5,14 +5,9 @@
 
 
             $id = $this->session->userdata('user_id');
-            $data['transactions'] = $this->transaction_model->get_transactions($id);
-
             
             $this->load->model('Category_model', 'category');
 
-            // foreach($data['transactions'] as $tran){
-            //     $data['category_names'][$tran['transaction_id']] = $this->category->get_name($tran['category_id']);
-            // }
             
             $this->load->model('Category_model', 'category');
             $data['categories'] = $this->category->get_category();
@@ -27,9 +22,7 @@
 
         public function ajax_list(){
             
-            $id = $this->session->userdata('user_id');
-
-            echo $this->transaction_model->get_transactions($id);
+            echo $this->transaction_model->get_transactions();
             //echo "Hello";
         }
 

@@ -29,7 +29,9 @@
 
 			$('#form').attr('action', '<?php echo base_url() ?>transactions/ajax_add');
 			list_transactions();
-			$('#table').DataTable();
+			$('#table').DataTable({
+				"order": [[ 1, "desc" ]]
+			});
 
 			
 			var balance = parseFloat($('#balance').text());
@@ -184,35 +186,12 @@
 			$.getJSON(income_api),
 			$.getJSON(expense_api)		
 		).done(function(result1,result2){
-			
-			//console.log(result1[0].length);
-			//console.log(result2);
-
-			console.log("---------Income--------");
-
-			//for (var i = 0; i < result1[0].length; i++) {
-			//	dates.push(result1[0][i].created_at);
-			//	income.push(result1[0][i].transaction_price);
-				//console.log(result1[0][i].created_at + " = " + result1[0][i].transaction_price );
-				
-			//}
-			
 			console.log("---------Expense--------");
 
 			for (var i = 0; i < result2[0].length; i++) {
 				dates.push(result2[0][i].created_at);
 				expense.push(result2[0][i].transaction_price);
-				//console.log(result2[0][i].created_at + " = " + result2[0][i].transaction_price );
 			}
-
-			console.log(dates);
-
-			var uniqueDates = [];
-			$.each(dates, function(i, el){
-				if($.inArray(el, uniqueDates) === -1) uniqueDates.push(el);
-			});
-			uniqueDates.sort();
-			console.log(uniqueDates);
 
 			var buyerData = {
 				labels : dates,
@@ -228,7 +207,7 @@
 			var buyers = document.getElementById('myChart').getContext('2d');
 	    
 			var myLineChart = new Chart(buyers, {
-				type: 'line',
+			type: 'line',
 				data: buyerData
 			});
 

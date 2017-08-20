@@ -58,6 +58,13 @@
                 </div>
                 </div>
 
+                
+                <div class="field">
+                    <div class="control">
+                        <input class="input" name="date" type="date"  value="<?php echo $transaction['created_at']; ?>">
+                    </div>
+                </div>
+
 
                 <div class="field is-grouped">
                 <div class="control">
